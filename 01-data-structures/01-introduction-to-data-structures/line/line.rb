@@ -33,6 +33,7 @@ class Line
       if person == member
         return member
       end
+    end
   end
 
   private
@@ -45,5 +46,6 @@ class Line
       else
         count += 1
       end
+    end
   end
 end
