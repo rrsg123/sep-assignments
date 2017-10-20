@@ -1,0 +1,11 @@
+Coalesced Hashing-
+This method links together chains of nodes within the table. Cannot have more elements than table slots.
+
+Hopscotch Hashing-
+This method combines cuckoo hashing with linear probing. Defines a neighborhood of buckets around the original bucket, begins search there. If the neighborhood of buckets does not have empty slots, an empty bucket is found outside the neighborhood. The function then hops this bucket into the original neighborhood, where the value can be inserted.
+
+2-Choice
+This method takes two hashing functions and inserts the item into the table with fewer elements.
+
+My Stategy-
+I would combine random probing with linear and/or quadratic probing to minimize intial collision, but optimize the ensuing search.
