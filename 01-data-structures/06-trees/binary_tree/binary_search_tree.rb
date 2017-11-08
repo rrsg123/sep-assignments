@@ -1,7 +1,6 @@
 require_relative 'node'
 
 class BinarySearchTree
-  attr_accessor :left, :right
 
   def initialize(root)
     @root = root
@@ -55,20 +54,18 @@ class BinarySearchTree
   def printf(children=nil)
     oldA   =  [@root]
     newA   =  []
-    oldA.each do |i|
-      if i != nil
-        newA.push(i)
-      end
+    while oldA.length != 0
+      i = oldA.shift
       if i.left  != nil
-        newA.push(i.left)
+        oldA.push(i.left)
       end
       if i.right != nil
-        newA.push(i.right)
+        oldA.push(i.right)
       end
+      newA.push("#{i.title}: #{i.rating}")
     end
     newA.each do |j|
-      puts "#{j.title}: #{j.rating}"
+      puts j
     end
   end
 end
-
