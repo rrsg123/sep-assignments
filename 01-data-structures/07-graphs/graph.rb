@@ -1,7 +1,7 @@
-include 'node'
+require_relative 'node'
 
 class Graph
-	def find_kevin_bacon(actor)	
+	def find_kevin_bacon(name)	
 	
 	  #here I will cycle through all the actors the target has been involved with 
 	  connections = []
@@ -14,7 +14,7 @@ class Graph
 
 
 
-	  actor.film_actor_hash.each do |film, actors|
+	  film_actor_hash.each do |film, actors|
 	    actors.each do |actor|
 	      if actor == Kevin_Bacon
 	      	connections.push(film)
@@ -22,8 +22,10 @@ class Graph
 	      	remainder_1.push(actor)
 	      end
 	    end
+	  end  
+	
 	  	remainder_1.each do |actor|
-	  	  actor.film_actor_hash.each do |film, actors|
+	  	  actor.each do |film, actors|
 	  	  	film.each do |actor|
 	  	  		if actor == Kevin_Bacon
 	  	  			connections.push(remainder_1[actor])
@@ -34,8 +36,9 @@ class Graph
 	  	  	end
 	  	  end
 	  	end
+	
 	  	remainder_2.each do |actor|
-	  	  actor.film_actor_hash.each do |film, actors|
+	  	  actor.each do |film, actors|
 	  	  	film.each do |actor|
 	  	  		if actor == Kevin_Bacon
 	  	  			connections.push(remainder_2[actor])
@@ -46,18 +49,21 @@ class Graph
 	  	  	end
 	  	  end
 	  	end
+	
 	  	remainder_3.each do |actor|
-	  	  actor.film_actor_hash.each do |film, actors|
+	  	  actor.each do |film, actors|
 	  	  	film.each do |actor|
 	  	  		if actor == Kevin_Bacon
 	  	  			connections.push(remainder_3[actor])
 	  	  			connections.push(film)
 	  	  		else
-	  	  			print "There is no connection!"
+	  	  			print "There is no connection or connection is longer than 6 edges!"
 	  	  		end
 	  	  	end
 	  	  end
 	  	end
+	
+
 	print connections	
 	end
 end
