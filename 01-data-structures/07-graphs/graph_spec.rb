@@ -28,7 +28,7 @@ RSpec.describe Graph, type: Class do
       film_actor_hash["The Godfather"]             = ["Marlon_Brando", "Al_Pacino", "James_Caan", "Robert_Duvall", "Diane_Keaton", "John_Cazale"]
       film_actor_hash["Random Movie"]              = ["Random_Actor1", "Random_Actor2", "Random_Actor3", "Random_Actor4", "Random_Actor5", "Random_Actor6"]
     
-      expect(Graph.find_kevin_bacon(Tony_Roberts)).to eq ["Annie Hall", Woody_Allen, "Hannah and Her Sisters", Dianne_Wiest, "Footloose"]
+      expect(Graph.find_kevin_bacon("Tony_Roberts")).to eq ["Annie Hall", Woody_Allen, "Hannah and Her Sisters", Dianne_Wiest, "Footloose"]
     end
 
     it "returns the number of edges connecting passed actor to Kevin_Bacon" do
@@ -40,7 +40,7 @@ RSpec.describe Graph, type: Class do
       film_actor_hash["The Godfather"]             = ["Marlon_Brando", "Al_Pacino", "James_Caan", "Robert_Duvall", "Diane_Keaton", "John_Cazale"]
       film_actor_hash["Random Movie"]              = ["Random_Actor1", "Random_Actor2", "Random_Actor3", "Random_Actor4", "Random_Actor5", "Random_Actor6"]
     
-      expect(Graph.find_kevin_bacon(Marlon_Brando)).to eq "There is no connection or connection is longer than 6 edges!"
+      expect(Graph.find_kevin_bacon("Marlon_Brando")).to eq "There is no connection or connection is longer than 6 edges!"
     end
 
     it "returns the number of edges connecting passed actor to Kevin_Bacon" do
@@ -52,7 +52,7 @@ RSpec.describe Graph, type: Class do
       film_actor_hash["The Godfather"]             = ["Marlon_Brando", "Al_Pacino", "James_Caan", "Robert_Duvall", "Diane_Keaton", "John_Cazale"]
       film_actor_hash["Random Movie"]              = ["Random_Actor1", "Random_Actor2", "Random_Actor3", "Random_Actor4", "Random_Actor5", "Random_Actor6"]
     
-      expect(Graph.find_kevin_bacon(Random_Actor4)).to eq "There is no connection or connection is longer than 6 edges!"
+      expect(Graph.find_kevin_bacon("Random_Actor4")).to eq "There is no connection or connection is longer than 6 edges!"
     end
   end
 end  
