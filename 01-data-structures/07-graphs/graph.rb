@@ -53,6 +53,6 @@ class Graph
  	  else
  	   	connections.push("There is no connection, or the connections is longer than 6 edges")
  	  end
-	puts connections	
+	return connections	
 	end
 end
