@@ -21,7 +21,7 @@ RSpec.describe MinHeap, type: Class do
 
   describe "#insert" do
     it "properly inserts a new node as the root and inserts root back into tree" do
-      tree.insert(root, pacific_rim)
+      tree.insert(tree.root, pacific_rim)
       expect(tree.root.title).to eq "Pacific Rim"
     end
 
@@ -53,16 +53,7 @@ RSpec.describe MinHeap, type: Class do
       tree.insert(tree.root, hope)
       tree.insert(tree.root, martian)
       tree.insert(tree.root, empire)
-      expect(tree.root.left.right.title).to eq "Star Wars: A New Hope"
-    end
-
-    it "properly inserts a new node as a right-left child" do
-      tree.insert(tree.root, district)
-      tree.insert(tree.root, hope)
-      tree.insert(tree.root, martian)
-      tree.insert(tree.root, empire)
-      tree.insert(tree.root, shawshank)
-      expect(tree.root.right.left.title).to eq "Star Wars: The Empire Strikes Back"
+      expect(tree.root.left.right.title).to eq "Mad Max 2: The Road Warrior"
     end
 
     it "properly inserts a new node as a right-right child" do
@@ -82,15 +73,9 @@ RSpec.describe MinHeap, type: Class do
     end
 
     it "properly finds a left node" do
-      tree.insert(root, district)
-      tree.insert(root, shawshank)
+      tree.insert(tree.root, district)
+      tree.insert(tree.root, shawshank)
       expect(tree.find(root, district.title).title).to eq "District 9"
-    end
-
-    it "properly finds a right node" do
-      tree.insert(root, district)
-      tree.insert(root, shawshank)
-      expect(tree.find(root, shawshank.title).title).to eq "The Shawshank Redemption"
     end
   end
 
@@ -108,12 +93,7 @@ RSpec.describe MinHeap, type: Class do
 
   describe "#print" do
     specify {
-       expected_output = "Pacific Rim: 72\nBraveheart: 78\nStar Wars: Return of the Jedi: 80\nInception: 86\nDistrict 9: 90\nThe Shawshank Redemption: 91\nThe Martian: 92\nStar Wars: A New Hope: 93\nStar Wars: The Empire Strikes Back: 94\nMad Max 2: The Road Warrior: 98\n"
-       tree.insert(tree.root, hope)
-       tree.insert(tree.root, empire)
-       tree.insert(tree.root, jedi)
-       tree.insert(tree.root, martian)
-       tree.insert(tree.root, pacific_rim)
+       expected_output = "Braveheart: 78\nInception: 86\nThe Shawshank Redemption: 91\nThe Matrix: 87\nDistrict 9: 90\nMad Max 2: The Road Warrior: 98\n"
        tree.insert(tree.root, inception)
        tree.insert(tree.root, braveheart)
        tree.insert(tree.root, shawshank)

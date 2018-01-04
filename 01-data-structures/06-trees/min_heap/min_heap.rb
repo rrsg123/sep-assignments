@@ -10,51 +10,47 @@ class MinHeap
   def insert(root,node)
     if root.rating > node.rating
       a = root
-      root = node
-      insert(root.left,a)
+      @root = node
+      insert(@root,a)
     else
-      if root.left == nil
+      if root.left.nil?
         root.left = node
-      elsif root.left != nil && root.right == nil
+      elsif root.right.nil? && root.left != nil
         if root.left.rating < node.rating
           root.right = node
         else
-          a = root.left
+          root.right = root.left
           root.left = node
-          root.right = a
         end
-      elsif root.left && root.right
+      elsif root.left != nil && root.right != nil && root.left.left != nil && root.left.right != nil
+        insert(root.right,node)
+      elsif root.left != nil && root.right != nil
         insert(root.left,node)
-      elsif root.left.left && root.left.right
-        insert(root.right,node)      
-      end   
+      end
     end
   end  
 
   def find(root,data)
-    if root == nil || data == nil
+    if data.nil? || root.nil?
       return nil
+    end
+    if root.title == data
+      return root
     else
-      if root.title == data
-        return root
-      elsif 
-        l = find(root.left, data)
-        r = find(root.right, data)
-        if l
-          return l
-        elsif r
-          return r 
-        end
+      current = find(root.left,data)
+      if current.nil?
+        current = find(root.right,data)
       end
     end
+    return current
   end
 
   def delete(root,data)
-    if root == nil || data == nil
+    if root.nil? || data.nil?
       return nil
     else
       current = find(root,data)
-      if current == nil
+      if current.nil?
         return nil
       else
         current.title  = nil
@@ -77,5 +73,4 @@ class MinHeap
     end
     puts newA
   end
-
 end
