@@ -1,57 +1,35 @@
 require_relative 'node'
 
 class MinHeap
-  attr_accessor :root, :title, :rating 
+  attr_accessor :root
 
   def initialize(root)
-  	@root = root
+    @root = root
   end
 
   def insert(root,node)
     if root.rating > node.rating
-       temp = root
-       @root = node
-       insert(@root,temp)
+      a = root
+      root = node
+      insert(root.left,a)
     else
-      if root.left == nil && root.right == nil
+      if root.left == nil
         root.left = node
-      elsif root.left && root.right == nil
-        if node.rating > root.left.rating
+      elsif root.left != nil && root.right == nil
+        if root.left.rating < node.rating
           root.right = node
         else
           a = root.left
-          root.left  = node
+          root.left = node
           root.right = a
         end
       elsif root.left && root.right
-        if node.rating < root.left.rating
-          root.right = b
-          root.right = root.left
-          root.left = node
-          insert(root.left,b)
-        elsif node.rating > root.left.rating && node.rating < root.right.rating
-          c = root.right
-          root.right = node
-          insert(root.left,c)
-        end
-      end
+        insert(root.left,node)
+      elsif root.left.left && root.left.right
+        insert(root.right,node)      
+      end   
     end
-  end
-
-
-  def delete(root,data)
-    if root == nil || data == nil
-      return nil
-    else
-      current = find(root,data)
-      if current != nil
-        current.title = nil
-        current.rating = nil
-      else
-        nil
-      end
-    end
-  end
+  end  
 
   def find(root,data)
     if root == nil || data == nil
@@ -59,10 +37,28 @@ class MinHeap
     else
       if root.title == data
         return root
-      elsif root.left != nil
-        find(root.left,data)
-      elsif root.right != nil
-        find(root.right,data)
+      elsif 
+        l = find(root.left, data)
+        r = find(root.right, data)
+        if l
+          return l
+        elsif r
+          return r 
+        end
+      end
+    end
+  end
+
+  def delete(root,data)
+    if root == nil || data == nil
+      return nil
+    else
+      current = find(root,data)
+      if current == nil
+        return nil
+      else
+        current.title  = nil
+        current.rating = nil
       end
     end
   end
@@ -70,17 +66,16 @@ class MinHeap
   def print(children=nil)
     oldA   =  [@root]
     newA   =  []
-    while oldA.length > 0
-      i = oldA.shift
-      if i.left  != nil
-        oldA.push(i.left)
+    oldA.each do |x|
+      newA.push("#{x.title}: #{x.rating}")
+      if x.left != nil
+        oldA.push(x.left)
       end
-      if i.right != nil
-        oldA.push(i.right)
+      if x.right != nil
+        oldA.push(x.right)
       end
-      newA.push("#{i.title}: #{i.rating}")
     end
-    newA.each {|j| puts j}
+    puts newA
   end
 
 end
