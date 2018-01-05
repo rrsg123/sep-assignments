@@ -1,0 +1,12 @@
+				user       system     total      real
+tree insert     0.960000   0.020000   0.980000   (0.987269)
+heap insert     0.440000   0.000000   0.440000   (0.442223)
+
+tree find       0.000000   0.000000   0.000000   (0.000027)
+heap find       0.000000   0.000000   0.000000   (0.000079)
+
+tree delete     0.000000   0.000000   0.000000   (0.000016)
+heap delete     0.000000   0.000000   0.000000   (0.000041)
+
+
+It seems that with my two compared classes, the tree takes longer to insert into. The find and delete functions, however, seem to run faster on my tree. I'm not sure how much of this is relevant to the difference in logic between the functions, but overall I would prefer a heap structure, as it seems to run quite a bit faster where it matters (.98 vs .44) and not a huge detriment where it is slightly slower (.000027 vs .000079).
