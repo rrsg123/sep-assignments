@@ -1,0 +1,2 @@
+1. We're effectively doubling the array each collision, without the need to create so much space. Eventually (could be very quickly),this can get incredibly inefficient. As the checkpoint points out - "nearly half of all hashes... ...never grow larger than one entry" - implying that there is indeed some inefficiency here. 
+
