@@ -1,0 +1,14 @@
+1. Spacial locality describes the physical relationship between stored data. Data is arranged - sequentially in an array for instance - for faster access.
+
+2.
+  Creation:
+	Array:   0.010000   0.000000   0.010000 (  0.007322)
+  	List:    0.010000   0.000000   0.010000 (  0.009782)
+  Access
+ 	Array:   0.000000   0.000000   0.000000 (  0.000006)
+  	List:    0.000000   0.000000   0.000000 (  0.000642)
+  Deletion
+    Array:   0.000000   0.000000   0.000000 (  0.000043)
+  	List:    0.000000   0.000000   0.000000 (  0.001709)
+
+  	We can see that for the situations tested, arrays are quicker.
