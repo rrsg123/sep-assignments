@@ -1,0 +1,8 @@
+1. 7
+2. 3
+3. (21 + 34)= 55, (34 + 55) = 89, (55 + 89) = 144
+
+
+
+1. In an unsorted collection, I would use a linear search, as a binary search needs a sorted set in some way to know what to eliminate. I would also probably iterate through the set, I would imagine recursion would take longer in more complex alogrithms.
+2. In a sorted collection, I would definitely use a binary search, since you're drastically reducing the steps over a linear search with each level. I would probably be more inclined to use a iterative approach, but I'm guessing it really would depend on the set and the task.
